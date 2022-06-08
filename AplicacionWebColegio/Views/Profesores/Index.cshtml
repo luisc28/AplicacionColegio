@@ -1,0 +1,36 @@
+﻿@using AplicacionWebColegio.Models
+@model List<ProfesorCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td width="10%">@Html.LabelFor(p => Model[0].iidprofesores)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].nombre)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].apellido)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].materia)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].email)</td>
+            <td width="10%">Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.iidprofesores</td>
+                    <td>@item.nombre</td>
+                    <td>@item.apellido</td>
+                    <td>@item.materia</td>
+                    <td>@item.email</td>
+                    <td>
+                        @Html.ActionLink(" ", "Editar", "Profesores", new { id = @item.iidprofesores }, new { @class = "bi bi-pencil-square btn btn-primary" })
+                        @Html.ActionLink(" ", "ELiminar", "Profesores", new { id = @item.iidprofesores }, new { @class = "bi bi-trash3 btn btn-danger" })
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
