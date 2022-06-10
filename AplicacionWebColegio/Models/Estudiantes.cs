@@ -17,8 +17,8 @@ namespace AplicacionWebColegio.Models
         public int IIDESTUDIANTES { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
-        public string CURSO { get; set; }
+        public int CURSO { get; set; }
         public string EMAIL { get; set; }
-        public Nullable<int> BHABILITADO { get; set; }
+        public int BHABILITADO { get; set; }
     }
 }

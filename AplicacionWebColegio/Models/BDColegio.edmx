@@ -5,18 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BDCOLEGIOBOTOGAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Estudiantes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Estudiantes">
           <Key>
             <PropertyRef Name="IIDESTUDIANTES" />
           </Key>
           <Property Name="IIDESTUDIANTES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
-          <Property Name="APELLIDO" Type="varchar" MaxLength="100" />
-          <Property Name="CURSO" Type="varchar" MaxLength="100" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
-          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CURSO" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Profesores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -32,16 +30,7 @@ advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Profesores' no tiene def
           <Property Name="BHABILITADO" Type="int" />
         </EntityType>
         <EntityContainer Name="BDCOLEGIOBOTOGAModelStoreContainer">
-          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Estudiantes].[IIDESTUDIANTES] AS [IIDESTUDIANTES], 
-    [Estudiantes].[NOMBRE] AS [NOMBRE], 
-    [Estudiantes].[APELLIDO] AS [APELLIDO], 
-    [Estudiantes].[CURSO] AS [CURSO], 
-    [Estudiantes].[EMAIL] AS [EMAIL], 
-    [Estudiantes].[BHABILITADO] AS [BHABILITADO]
-    FROM [dbo].[Estudiantes] AS [Estudiantes]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesores" EntityType="Self.Profesores" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Profesores].[IIDPROFESORES] AS [IIDPROFESORES], 
@@ -57,6 +46,10 @@ advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Profesores' no tiene def
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDCOLEGIOBOTOGAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDCOLEGIOBOTOGAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Profesores" EntityType="BDCOLEGIOBOTOGAModel.Profesores" />
+          <EntitySet Name="Estudiantes" EntityType="BDCOLEGIOBOTOGAModel.Estudiantes" />
+        </EntityContainer>
         <EntityType Name="Profesores">
           <Key>
             <PropertyRef Name="IIDPROFESORES" />
@@ -68,20 +61,16 @@ advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Profesores' no tiene def
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BHABILITADO" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="BDCOLEGIOBOTOGAEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Profesores" EntityType="Self.Profesores" />
-          <EntitySet Name="Estudiantes" EntityType="BDCOLEGIOBOTOGAModel.Estudiantes" />
-        </EntityContainer>
         <EntityType Name="Estudiantes">
           <Key>
             <PropertyRef Name="IIDESTUDIANTES" />
           </Key>
           <Property Name="IIDESTUDIANTES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="APELLIDO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CURSO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CURSO" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -92,12 +81,12 @@ advertencia 6002: La tabla o vista 'BDCOLEGIOBOTOGA.dbo.Profesores' no tiene def
           <EntitySetMapping Name="Profesores">
             <EntityTypeMapping TypeName="BDCOLEGIOBOTOGAModel.Profesores">
               <MappingFragment StoreEntitySet="Profesores">
-                <ScalarProperty Name="IIDPROFESORES" ColumnName="IIDPROFESORES" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-                <ScalarProperty Name="MATERIA" ColumnName="MATERIA" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MATERIA" ColumnName="MATERIA" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="IIDPROFESORES" ColumnName="IIDPROFESORES" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

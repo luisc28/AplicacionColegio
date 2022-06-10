@@ -9,16 +9,15 @@ namespace AplicacionWebColegio.Models
     public class EstudianteCLS
     {
         [Display(Name ="ID Estudiante")]
-        public int iidestudiante { get; set; }
-        [Display(Name = "Nombre Estudiante")]
-        public string nombre { get; set; }
-        [Display(Name = "Apellido Estudiante")]
-        public string apellido { get; set; }
+        public int Iidestudiante { get; set; }
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+        [Display(Name = "Apellido")]
+        public string Apellido { get; set; }
         [Display(Name = "Curso")]
-        public string curso { get; set; }
+        public int Curso { get; set; }
         [Display(Name = "Email")]
-        public string email { get; set; }
-        public int bhabilitado { get; set; }
-
+        public string Email { get; set; }
+        public int Bhabilitado { get; set; }
     }
 }

@@ -6,33 +6,35 @@
 
 @*<h2>Index</h2>*@
 
+<br />
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            @*<td width="10">@Html.LabelFor(p => Model[0].iidestudiante)</td>*@
-            <td width="20%">@Html.LabelFor(p => Model[0].nombre)</td>
-            <td width="20%">@Html.LabelFor(p => Model[0].apellido)</td>
-            <td width="10%">@Html.LabelFor(p => Model[0].curso)</td>
-            <td width="30%">@Html.LabelFor(p => Model[0].email)</td>
+            @*<td width="10">@Html.LabelFor(p => Model[0].Iidestudiante)</td>*@
+            <td width="20%">@Html.LabelFor(p => Model[0].Nombre)</td>
+            <td width="20%">@Html.LabelFor(p => Model[0].Apellido)</td>
+            <td width="10%">@Html.LabelFor(p => Model[0].Curso)</td>
+            <td width="30%">@Html.LabelFor(p => Model[0].Email)</td>
             <td width="10%">Operaciones</td>
         </tr>
     </thead>
-    <br/>
     <tbody>
-        @foreach(var item in Model)
-            {
-                <tr>
-                    @*<td>@item.iidestudiante</td>*@
-                    <td>@item.nombre</td>
-                    <td>@item.apellido</td>
-                    <td>@item.curso</td>
-                    <td>@item.email</td>
-                    <td>
-                        @Html.ActionLink(" ", "Editar", "Estudiantes", new { id = @item.iidestudiante }, new { @class = "bi bi-pencil-square btn btn-primary" })
-                        @Html.ActionLink(" ", "ELiminar", "Estudiantes", new { id = @item.iidestudiante }, new { @class = "bi bi-trash3 btn btn-danger" })
-                    </td>
-                </tr>
-            }
+        
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@item.Iidestudiante</td>*@
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Curso</td>
+                <td>@item.Email</td>
+                <td>
+                    @Html.ActionLink(" ", "Editar", "Estudiantes", new { id = @item.Iidestudiante }, new { @class = "bi bi-pencil-square btn btn-primary" })
+                    @Html.ActionLink(" ", "ELiminar", "Estudiantes", new { id = @item.Iidestudiante }, new { @class = "bi bi-trash3 btn btn-danger" })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 <br />
+@Html.ActionLink("Create", "Create", "Estudiantes", new { @class="btn btn-success" })
