@@ -1,0 +1,42 @@
+﻿@using AplicacionWebColegio.Models
+@model ProfesorCLS
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>Agregar</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Agregar", "Profesores", FormMethod.Post))
+        {
+        <div>
+            @Html.LabelFor(p => p.nombre)
+            @Html.TextBoxFor(p => p.nombre, new { @class = "form-control" })
+            @Html.ValidationMessage("nombre", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(p => p.apellido)
+            @Html.TextBoxFor(p => p.apellido, new { @class = "form-control" })
+            @Html.ValidationMessage("apellido", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(p => p.materia)
+            @Html.TextBoxFor(p => p.materia, new { @class = "form-control" })
+            @Html.ValidationMessage("materia", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(p => p.email)
+            @Html.TextBoxFor(p => p.email, new { @class = "form-control" })
+            @Html.ValidationMessage("email", new { @class = "text-danger" })
+        </div>
+        <div>
+            <br />
+            <div style="margin:auto">
+                <input type="submit" class="btn btn-primary" value="Guardar" />
+                @Html.ActionLink("Regresar", "Index", "Profesores", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -15,18 +15,44 @@ namespace AplicacionWebColegio.Controllers
             List<ProfesorCLS> listaProfesor = null;
             using (var bd= new BDCOLEGIOBOTOGAEntities())
             {
-                listaProfesor = (from profesor in bd.Profesores
-                                 where profesor.BHABILITADO == 1
+                listaProfesor = (from profesores in bd.Profesores
+                                 where profesores.BHABILITADO == 1
                                  select new ProfesorCLS
                                  {
-                                     iidprofesores = profesor.IIDPROFESORES,
-                                     nombre = profesor.NOMBRE,
-                                     apellido = profesor.APELLIDO,
-                                     materia = profesor.MATERIA,
-                                     email = profesor.EMAIL
+                                     iidprofesores = profesores.IIDPROFESORES,
+                                     nombre = profesores.NOMBRE,
+                                     apellido = profesores.APELLIDO,
+                                     materia = profesores.MATERIA,
+                                     email = profesores.EMAIL
                                  }).ToList();
             }
             return View(listaProfesor);
+        }
+        [HttpGet]
+        public ActionResult Agregar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Agregar(ProfesorCLS oProfesorCLS)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(oProfesorCLS);
+            }
+            using (var bd = new BDCOLEGIOBOTOGAEntities())
+            {
+                Profesores oProfesores = new Profesores();
+                oProfesores.NOMBRE = oProfesorCLS.nombre;
+                oProfesores.APELLIDO = oProfesorCLS.apellido;
+                oProfesores.MATERIA = oProfesorCLS.materia;
+                oProfesores.EMAIL = oProfesorCLS.email;
+                oProfesores.BHABILITADO = 1;
+                bd.Profesores.Add(oProfesores);
+                bd.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
