@@ -226,7 +226,10 @@
     <Content Include="SweetAlert2\sweetalert2.scss" />
     <Content Include="SweetAlert2\mixins.scss" />
     <Content Include="SweetAlert2\animations.scss" />
+<<<<<<< HEAD
     <Content Include="Views\Estudiantes\Create.cshtml" />
+=======
+>>>>>>> origin/RamaNile
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
