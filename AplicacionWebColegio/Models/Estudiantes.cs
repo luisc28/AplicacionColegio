@@ -20,5 +20,8 @@ namespace AplicacionWebColegio.Models
         public string CURSO { get; set; }
         public string EMAIL { get; set; }
         public Nullable<int> BHABILITADO { get; set; }
+        public Nullable<int> IIDSEXO { get; set; }
+    
+        public virtual Sexo Sexo { get; set; }
     }
 }

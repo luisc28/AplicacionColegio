@@ -12,16 +12,12 @@ namespace AplicacionWebColegio.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Profesores
+    public partial class sysdiagrams
     {
-        public int IIDPROFESORES { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDO { get; set; }
-        public string MATERIA { get; set; }
-        public string EMAIL { get; set; }
-        public Nullable<int> BHABILITADO { get; set; }
-        public Nullable<int> IIDSEXO { get; set; }
-    
-        public virtual Sexo Sexo { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

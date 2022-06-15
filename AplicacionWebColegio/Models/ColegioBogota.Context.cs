@@ -13,10 +13,10 @@ namespace AplicacionWebColegio.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDCOLEGIOBOTOGAEntities : DbContext
+    public partial class BDCOLEGIOBOTOGAEntities2 : DbContext
     {
-        public BDCOLEGIOBOTOGAEntities()
-            : base("name=BDCOLEGIOBOTOGAEntities")
+        public BDCOLEGIOBOTOGAEntities2()
+            : base("name=BDCOLEGIOBOTOGAEntities2")
         {
         }
     
@@ -27,5 +27,7 @@ namespace AplicacionWebColegio.Models
     
         public virtual DbSet<Estudiantes> Estudiantes { get; set; }
         public virtual DbSet<Profesores> Profesores { get; set; }
+        public virtual DbSet<Sexo> Sexo { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

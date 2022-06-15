@@ -13,7 +13,7 @@ namespace AplicacionWebColegio.Controllers
         public ActionResult Index()
         {
             List<EstudianteCLS> listaEstudiante = null;
-            using (var bd = new BDCOLEGIOBOTOGAEntities())
+            using (var bd = new BDCOLEGIOBOTOGAEntities2())
             {
                 listaEstudiante = (from estudiante in bd.Estudiantes
                                   where estudiante.BHABILITADO == 1

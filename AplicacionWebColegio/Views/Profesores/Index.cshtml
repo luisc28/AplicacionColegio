@@ -28,10 +28,22 @@
                 <td>@item.email</td>
                 <td>
                     @Html.ActionLink(" ", "Editar", "Profesores", new { id = @item.iidprofesores }, new { @class = "bi bi-pencil-square btn btn-primary" })
-                    @Html.ActionLink(" ", "ELiminar", "Profesores", new { id = @item.iidprofesores }, new { @class = "bi bi-trash3 btn btn-danger" })
+                    @Html.ActionLink(" ", "ELiminar", "Profesores", new { id = @item.iidprofesores }, new { @class = "bi bi-trash3 btn btn-danger", @onclick = "eliminar()" })
                 </td>
             </tr>
         }
     </tbody>
 </table>
 @Html.ActionLink("Agregar", "Agregar", "Profesores", null, new { @class = "btn btn-primary" })
+<script>
+    function eliminar() {
+        if (confirm("¿Deseas eliminar el registro?") == 1)
+   {
+            //Pone Si
+            alert("Se elimino correctamente");
+        } else {
+            //Pone No
+            event.preventDefault();
+        }
+   }
+</script>
